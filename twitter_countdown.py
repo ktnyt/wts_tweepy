@@ -23,11 +23,11 @@ if __name__ == '__main__':
     days = diff.days
     hours = diff.seconds / 3600 + days * 24
 
-    text = 'フォースの覚醒まであと{}日({}時間)です。'.format(days, hours)
+    text = 'フォースの覚醒まであと{0}日({1}時間)です。'.format(days, hours)
 
     # ツイートを送信
     try:
         api.update_status(status=text)
     except tweepy.TweepError as e:
-        print 'Error code {}: {}'.format(e[0][0]['code'], e[0][0]['message'])
+        print 'Error code {0}: {1}'.format(e[0][0]['code'], e[0][0]['message'])
     

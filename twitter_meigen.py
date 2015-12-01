@@ -27,4 +27,4 @@ if __name__ == '__main__':
     try:
         api.update_status(status=text)
     except tweepy.TweepError as e:
-        print 'Error code {}: {}'.format(e[0][0]['code'], e[0][0]['message'])
+        print 'Error code {0}: {1}'.format(e[0][0]['code'], e[0][0]['message'])

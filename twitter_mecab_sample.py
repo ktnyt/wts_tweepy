@@ -23,7 +23,7 @@ if __name__ == '__main__':
     for tweet in timeline:
         byte_text = tweet.text.encode('utf-8')
         print byte_text
-        fout.write('{}\n'.format(byte_text))
+        fout.write('{0}\n'.format(byte_text))
     fout.close()
 
     # 外部コマンドの実行には `os.system()` を使う
@@ -46,4 +46,4 @@ if __name__ == '__main__':
     fin.close()
 
     for item in sorted(data.items(), key=lambda x:x[1], reverse=True):
-        print '{}\t{}'.format(item[0], item[1])
+        print '{0}\t{1}'.format(item[0], item[1])

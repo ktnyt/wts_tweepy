@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
-import argparse
 import tweepy
 
 if __name__ == '__main__':
@@ -17,13 +16,8 @@ if __name__ == '__main__':
     # Twitter API
     api = tweepy.API(auth)
 
-    parser = argparse.ArgumentParser(description='あるscreenameのユーザのツイートをmax_count件取得する')
-    parser.add_argument('user', type=str, help='Twitterのscreenname')
-    parser.add_argument('max_count', type=int, help='取得する件数')
-
-    args = parser.parse_args()
-    user = args.user
-    max_count = args.max_count
+    user = sys.argv[1]
+    max_count = sys.argv[2]
 
     total = 0
     prev = -1
@@ -43,7 +37,7 @@ if __name__ == '__main__':
 
         for tweet in tweets:
             byte_text =  tweet.text.encode('utf_8')
-            print '{}\t{}\t{}\t{}'.format(N, tweet.id, tweet.created_at, byte_text)
+            print '{0}\t{1}\t{2}\t{3}'.format(N, tweet.id, tweet.created_at, byte_text)
             N += 1
             total += 1
             if total >= max_count:

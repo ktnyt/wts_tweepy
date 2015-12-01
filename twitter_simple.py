@@ -23,10 +23,10 @@ if __name__ == '__main__':
         byte_text = tweet.text.encode('utf-8')
         user = tweet.user
         screen_name = user.screen_name
-        print '{}: {}'.format(byte_text, screen_name)
+        print '{0}: {1}'.format(byte_text, screen_name)
 
     # ツイートを送信
     try:
         api.update_status(status='Hello, world!')
     except tweepy.TweepError as e:
-        print 'Error code {}: {}'.format(e[0][0]['code'], e[0][0]['message'])
+        print 'Error code {0}: {1}'.format(e[0][0]['code'], e[0][0]['message'])
