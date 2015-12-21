@@ -18,12 +18,12 @@ if __name__ == '__main__':
     api = tweepy.API(auth)
 
     current = datetime.now()
-    deadline = datetime(2015, 12, 18, 18, 30, 0, 0)
+    deadline = datetime(2016, 1, 1, 0, 0, 0, 0)
     diff = deadline - current
     days = diff.days
     hours = diff.seconds / 3600 + days * 24
 
-    text = 'フォースの覚醒まであと{0}日({1}時間)です。'.format(days, hours)
+    text = '新年まであと{0}日({1}時間)です。'.format(days, hours)
 
     # ツイートを送信
     try:

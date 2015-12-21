@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
+import sys
 import tweepy
 
 if __name__ == '__main__':
@@ -17,7 +18,7 @@ if __name__ == '__main__':
     api = tweepy.API(auth)
 
     user = sys.argv[1]
-    max_count = sys.argv[2]
+    max_count = int(sys.argv[2])
 
     total = 0
     prev = -1

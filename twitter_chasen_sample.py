@@ -23,7 +23,11 @@ if __name__ == '__main__':
     for tweet in timeline:
         byte_text = tweet.text.encode('utf-8')
         print byte_text
-        fout.write('%s\n' % (byte_text))
+        try:
+            euc_text = tweet.text.encode('euc-jp')
+        except:
+            pass
+        fout.write('%s\n' % (euc_text))
     fout.close()
 
     # 外部コマンドの実行には `os.system()` を使う
@@ -34,11 +38,13 @@ if __name__ == '__main__':
 
     fin = open('output.txt.chasen', 'r')
     for line in fin.readlines():
+        line = line.decode('euc-jp')
         if line.find('EOS') == 0:
             pass
         else:
             tmp = line.strip().split("\t")
-            if tmp[3].find('名詞') == 0:
+            word = tmp[2]
+            if tmp[3].find(u'名詞') == 0:
                 if not word in data:
                     data[word] = 0
                 data[word] += 1
