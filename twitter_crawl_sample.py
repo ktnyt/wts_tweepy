@@ -38,7 +38,7 @@ if __name__ == '__main__':
 
         for tweet in tweets:
             byte_text =  tweet.text.encode('utf_8')
-            print '{0}\t{1}\t{2}\t{3}'.format(N, tweet.id, tweet.created_at, byte_text)
+            print '%d\t%s\t%s\t%s' % (N, tweet.id, tweet.created_at, byte_text)
             N += 1
             total += 1
             if total >= max_count:

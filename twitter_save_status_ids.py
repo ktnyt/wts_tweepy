@@ -36,17 +36,17 @@ if __name__ == '__main__':
         if not tweet.id in data:
             try:
                 api.update_status(
-                    status='@{0} Hello!'.format(tweet.user.screen_name),
+                    status='@%s Hello!' % (tweet.user.screen_name),
                     in_reply_to_status_id=tweet.id
                 )
                 data.append(tweet.id)
             except tweepy.TweepError as e:
-                print 'Error code {0}: {1}'.format(e[0][0]['code'], e[0][0]['message'])
+                print 'Error code %d: %s' % (e[0][0]['code'], e[0][0]['message'])
         break
 
     f = open('log.txt', 'w')
     flock(f, fcntl.LOCK_EX | fcntl.LOCK_NB)
     for item in data:
-        f.write('{0}\n'.format(item))
+        f.write('%s\n' % (item))
     flock(f, fcntl.LOCK_UN)
     f.close()

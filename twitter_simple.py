@@ -3,10 +3,10 @@
 import tweepy
 
 if __name__ == '__main__':
-    consumer_key        = ''
-    consumer_secret     = ''
-    access_token        = ''
-    access_token_secret = ''
+    consumer_key        = 'jXCJDViYGtDQ5bEUvPZmHQ'
+    consumer_secret     = 'xexlwpVcNLSWvNwSGg0trbLfQj0NzHebh0X4q0CTs'
+    access_token        = '167358179-aGv42HeElgPcwhJruFVLGGm2sXNaZwucR27bw6cT'
+    access_token_secret = 'r412L37AIw7WIo3wHRsgzN6tKlKR6C02ruJD5E0Q7aERa'
 
     # Twitter OAuth
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -22,11 +22,11 @@ if __name__ == '__main__':
     for tweet in mentions:
         byte_text = tweet.text.encode('utf-8')
         user = tweet.user
-        screen_name = user.screen_name
-        print '{0}: {1}'.format(byte_text, screen_name)
+        screen_name = user.screen_name.encode('utf-8')
+        print '%s: %s' % (byte_text, screen_name)
 
     # ツイートを送信
     try:
         api.update_status(status='Hello, world!')
     except tweepy.TweepError as e:
-        print 'Error code {0}: {1}'.format(e[0][0]['code'], e[0][0]['message'])
+        print 'Error code %d: %s' % (e[0][0]['code'], e[0][0]['message'])
